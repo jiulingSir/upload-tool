@@ -34,14 +34,9 @@ export default class FtpUploader extends Uploader {
     public mkdir(remoteDir: string): Promise<Status> {
         return new Promise((resolve, reject) => {
             this.client.mkdir(remoteDir, (err) => {
-                if (err?.code === 550) {
-                    logger.warn(`${remoteDir} 目录已存在`);
-                    return resolve({
-                        code: SUCCESS_CODE
-                    });
-                } else if (err) {
+                if (err) {
                     logger.error(err);
-                    reject({
+                    return reject({
                         code: ERROR_CODE,
                         msg: `${remoteDir} 目录创建失败`,
                         error: err
@@ -105,7 +100,7 @@ export default class FtpUploader extends Uploader {
             this.client.list(root, (err, list) => {
                 if (err) {
                     logger.error(err);
-                    reject({
+                    return reject({
                         code: ERROR_CODE,
                         error: err
                     });

@@ -28,16 +28,12 @@ export const isFile = (curPath: string): boolean => {
  * @param {string} curType 当前类型
  * @return {*} 
  */
-export const getTypeInfo = (files: string[], remote: string, curType: string) => {
-    const TYPE_JUDGE = {
-        ['directory']: isDirectory,
-        ['file']: isFile
-    }
-    let list: string[] = [];
+export const getTypeInfo = (files: string[], remote: string, UploadFn: any, typeFn: any) => {
+    let list: any[] = [];
 
     files.forEach(file => {
-        if(TYPE_JUDGE[curType](file)) {
-            return path.join(remote, file);
+        if (typeFn(file)) {
+            list.push(UploadFn(remote, file));
         }
     });
 
@@ -50,7 +46,9 @@ export const getTypeInfo = (files: string[], remote: string, curType: string) =>
  * @param {string} remote 路径前缀
  */
 export const getDirectorys =  (list: string[], remote: string) => {
-    return getTypeInfo(list, remote, 'directory');
+    return getTypeInfo(list, remote, (remote, file) => {
+        return path.join(remote, path.basename(file));
+    }, isDirectory);
 }
 
 /**
@@ -59,7 +57,15 @@ export const getDirectorys =  (list: string[], remote: string) => {
  * @param {string} remote 路径前缀
  */
 export const getFiles =  (list: string[], remote: string) => {
-    return getTypeInfo(list, remote, 'file');
+    return getTypeInfo(list, remote, (remote, file) => {
+        let localFile = path.join(remote, file);
+        let remoteFile = path.join(remote, path.basename(file));
+
+        return {
+            localFile,
+            remoteFile
+        };
+    }, isFile);
 }
 
 /**

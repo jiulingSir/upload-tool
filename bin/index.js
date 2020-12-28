@@ -57,11 +57,10 @@ const askLoginData = async (remoteSystem) => {
 };
 
 const askAction = async () => {
-    rl.question('Action? (ls|cd|file|dir|del) > ', (res) => {
+    rl.question('Action? (ls|file|del) > ', (res) => {
         const ACTION_TYPE = {
             ['ls']: ls,
             ['file']: uploadFile,
-            ['dir']: uploadDir,
             ['del']: del
         };
 
@@ -86,28 +85,9 @@ const ls = async () => {
 
 const uploadFile = async () => {
     rl.question('接收文件的目的地路径? > ', async(file) => {
-        const local = glob.sync(file, []);
-        const remote = `./xyx/3.jpg`;
+        const remote = `./xyx/`;
         try {
-            await ftp.put(...local, remote).then((res) => {
-                console.log(res.data);
-            });
-        
-            askAction();
-        } catch(e) {
-            console.log(e);
-            askAction();
-        }
-    });
-};
-
-const uploadDir = async () => {
-    rl.question('接收文件夹目的地路径? > ', async (dir) => {
-        try {
-            await ftp.put(...local, remote).then((res) => {
-                console.log(res.data);
-            });
-        
+            await ftp.upload(file, remote);
             askAction();
         } catch(e) {
             console.log(e);
