@@ -9,11 +9,11 @@ export default class FtpUploader extends Uploader {
   
     constructor (opt) {
       super(opt);
+      this.client = new Client();
     }
 
-    public connect(): Promise<Client> {
+    public async connect(): Promise<Client> {
         return new Promise((resolve, reject) => {
-            this.client = new Client();
             this.client.connect(this.options);
 
             this.client.on('ready', () => {

@@ -43,6 +43,8 @@ export default class Uploader extends EventEmitter {
         }
 
         await this.batchPut(fileList);
+
+        return Promise.all(fileList);
     }
 
     public async batchMkdir (list: string[]) {

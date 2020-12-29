@@ -1,5 +1,4 @@
 const readline = require('readline');
-const path = require('path');
 const glob = require('glob');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -14,18 +13,6 @@ const start = async () => {
 }
 
 const askFtpOrSftp = async () => {
-    let remoteSystem = 'sftp';
-    ftp = new uploaderTool[remoteSystem]({
-        host: '47.107.157.97',
-        user: remoteSystem,
-        port: 21,
-        password: 'Admin@123',
-        type: remoteSystem
-    });
-
-    await ftp.connect();
-    askAction();
-    return;
     rl.question('Which file system would you like to use? (ftp|sftp) > ', res => {
         if (res == 'ftp' || res == 'sftp') {
             askLoginData(res);
