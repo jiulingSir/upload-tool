@@ -5,7 +5,7 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-const { FtpUploader } = require('../src/index.ts');
+const uploaderTool = require('../src/index.ts');
 
 let ftp;
 
@@ -14,12 +14,13 @@ const start = async () => {
 }
 
 const askFtpOrSftp = async () => {
-    ftp = new FtpUploader({
+    let remoteSystem = 'sftp';
+    ftp = new uploaderTool[remoteSystem]({
         host: '47.107.157.97',
-        user: 'ftp',
+        user: remoteSystem,
         port: 21,
         password: 'Admin@123',
-        remoteSystem: 'ftp'
+        type: remoteSystem
     });
 
     await ftp.connect();

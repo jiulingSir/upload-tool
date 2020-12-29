@@ -4,115 +4,91 @@ import { SUCCESS_CODE,  ERROR_CODE } from '../util/const-code/index';
 import logger from '../../widgets/util/log';
 import Uploader from '../util/class';
 
-export default class FtpUploader extends Uploader {
+export default class SftpUploader extends Uploader {
     protected client: Client;
   
     constructor (opt) {
       super(opt);
+      this.client = new Client();
     }
 
     public connect(): Promise<Client> {
-        return new Promise((resolve, reject) => {
-            this.client = new Client();
-            this.client.connect({
-                host: this.options.host,
-                port: this.options.port,
-                user: this.options.user,
-                password: this.options.password
+        return this.client.connect(this.options)
+            .then(() => {
+                logger.info('连接成功');
+                return {
+                    code: SUCCESS_CODE,
+                    data: this.client
+                };
+            }).catch((err) => {
+                logger.error(`连接失败：${err}`);
             });
-
-            this.client.on('ready', () => {
-                logger.info('ftp 连接成功');
-                resolve(this.client);
-            });
-            this.client.on('error', (err) => {
-                reject(`ftp:error:${err}`);
-            });
-        })
     }
 
     public mkdir(remoteDir: string): Promise<Status> {
-        return new Promise((resolve, reject) => {
-            this.client.mkdir(remoteDir, (err) => {
-                if (err) {
-                    logger.error(err);
-                    return reject({
-                        code: ERROR_CODE,
-                        msg: `${remoteDir} 目录创建失败`,
-                        error: err
-                    });
-                }
-
+        return this.client.mkdir(remoteDir)
+            .then(() => {
                 logger.info(`${remoteDir} 目录创建成功`);
-                resolve({
+                return {
                     code: SUCCESS_CODE,
                     data: remoteDir
-                });
+                };
+            }).catch((err) => {
+                logger.error(`${remoteDir} 目录创建失败`);
+                return {
+                    code: ERROR_CODE,
+                    error: err
+                }
             });
-        });
     }
 
     public async put(currentFile: string, remoteFile: string): Promise<Status> {
-        return new Promise((resolve, reject) => {
-            this.client.put(currentFile, remoteFile, (err) => {
-                if (err) {
-                    logger.error(`上传失败：${err}`);
-                    return reject({
-                        code: ERROR_CODE,
-                        error: err,
-                        msg: `${currentFile} 文件上传失败`
-                    });
-                }
-
-                logger.info(`上传成功：${remoteFile}`);
-                resolve({
+        return this.client.put(currentFile, remoteFile)
+            .then(() => {
+                logger.info(`上传成功：${currentFile}`);
+                return {
                     code: SUCCESS_CODE,
                     data: currentFile
-                });
-            })
-        })
+                };
+            }).catch((err) => {
+                logger.error(`${currentFile}文件上传失败, err：${err}`);
+                return {
+                    code: ERROR_CODE,
+                    error: err
+                }
+            });
     }
 
     public async delete(file: string): Promise<Status> {
-        return new Promise((resolve, reject) => {
-            this.client.delete(file, err => {
-                if (err) {
-                    logger.error(err);
-                    return reject({
-                        code: ERROR_CODE,
-                        error: err
-                    });
-                }
-
+        return this.client.delete(file)
+            .then(() => {
                 logger.info(`${file} 删除成功`);
-                resolve({
+                return {
                     code: SUCCESS_CODE,
                     data: file
-                });
+                };
+            }).catch((err) => {
+                logger.error(`${file} 目录删除失败, err：${err}`);
+                return {
+                    code: ERROR_CODE,
+                    error: err
+                }
             });
-        })
     }
     
     public async list(root?: string): Promise<Status> {
         root = root || '/xyx';
 
-        return new Promise((resolve, reject) => {
-            this.client.list(root, (err, list) => {
-                if (err) {
-                    logger.error(err);
-                    return reject({
-                        code: ERROR_CODE,
-                        error: err
-                    });
-                }
-
-                logger.info(`查看目录：${root}`);
-                resolve({
+        return this.client.list(root)
+            .then((list) => {
+                logger.info(`查看${root}：`);
+                return {
                     code: SUCCESS_CODE,
                     data: list
-                });
+                };
+            }).catch((err) => {
+                logger.error(`${err}查看失败`);
             });
-        });
     }
 
     public async close() {

@@ -14,12 +14,7 @@ export default class FtpUploader extends Uploader {
     public connect(): Promise<Client> {
         return new Promise((resolve, reject) => {
             this.client = new Client();
-            this.client.connect({
-                host: this.options.host,
-                port: this.options.port,
-                user: this.options.user,
-                password: this.options.password
-            });
+            this.client.connect(this.options);
 
             this.client.on('ready', () => {
                 logger.info('ftp 连接成功');
