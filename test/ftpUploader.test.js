@@ -63,36 +63,36 @@ beforeEach(() => {
     ftp.mockClear();
 });
 
-describe('ftp功能测试', () => {
+describe('Test FTP function', () => {
 
-    it('检查是否调用了类构造函数', () => {
+    it('Test the Class was called', () => {
         new ftpUploader(opt);
 
         expect(ftp).toHaveBeenCalledTimes(1);
     });
 
-    it('测试连接成功', async () => {
+    it('Test connect server successfully', async () => {
         let client = new ftpUploader(opt);
 
         client.connect();
         expect(mockFn).toBeCalled();
     });
 
-    it('测试删除成功', async () => {
+    it('Test delete file successfully', async () => {
         let client = new ftpUploader(opt);
         let result = await client.delete(file);
 
         expect(result.code).toEqual(SUCCESS_CODE);
     });
 
-    it('测试删除失败', async () => {
+    it('Test delete file failed', async () => {
         let client = new ftpUploader(opt);
         client.delete('').catch(err => {
             expect(err.code).toEqual(ERROR_CODE);
         })
     });
 
-    it('测试上传成功', async () => {
+    it('Test upload file successfully', async () => {
         let client = new ftpUploader(opt);
         let result = await client.put(file, file);
 
@@ -100,7 +100,7 @@ describe('ftp功能测试', () => {
     });
 
 
-    it('测试上传失败', async () => {
+    it('Test upload file failed', async () => {
         let client = new ftpUploader(opt);
 
         await client.put('', '').catch(res => {
@@ -112,14 +112,14 @@ describe('ftp功能测试', () => {
         });
     });
 
-    it('测试上传文件夹', async () => {
+    it('Test upload folder successfully', async () => {
         let client = new ftpUploader(opt);
         let result = await client.upload(dir);
 
         expect(result).toBeInstanceOf(Array);
     });
 
-    it('测试创建文件夹成功', async () => {
+    it('Test create folder successfully', async () => {
 
         let client = new ftpUploader(opt);
         client.mkdir(dir).then(res => {
@@ -127,7 +127,7 @@ describe('ftp功能测试', () => {
         });
     });
 
-    it('测试创建文件夹失败', async () => {
+    it('Test create folder failed', async () => {
 
         let client = new ftpUploader(opt);
         client.mkdir('otherError').catch(res => {
@@ -135,7 +135,7 @@ describe('ftp功能测试', () => {
         });;
     });
 
-    it('测试查看目录', async () => {
+    it('Test view info', async () => {
 
         let client = new ftpUploader(opt);
         let result = await client.list('root');
@@ -143,7 +143,7 @@ describe('ftp功能测试', () => {
         expect(result.code).toEqual(SUCCESS_CODE);
     });
 
-    it('测试查看不存在目录', async () => {
+    it('Test view info not there', async () => {
 
         let client = new ftpUploader(opt);
 
@@ -154,7 +154,7 @@ describe('ftp功能测试', () => {
 
     });
 
-    it('测试关闭服务', () => {
+    it('Test shutdown service successfully', () => {
         let client = new ftpUploader(opt);
         client.close();
 

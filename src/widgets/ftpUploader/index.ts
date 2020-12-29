@@ -15,13 +15,12 @@ export default class FtpUploader extends Uploader {
     public async connect(): Promise<Client> {
         return new Promise((resolve, reject) => {
             this.client.connect(this.options);
-
             this.client.on('ready', () => {
                 logger.info('ftp 连接成功');
-                resolve(this.client);
+                return resolve(this.client);
             });
             this.client.on('error', (err) => {
-                reject(`ftp:error:${err}`);
+                return reject(`ftp:error:${err}`);
             });
         })
     }
