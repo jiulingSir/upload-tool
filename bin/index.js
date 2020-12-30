@@ -28,7 +28,7 @@ const askLoginData = async (remoteSystem) => {
         rl.question('Port? > ', port => {
             rl.question('User? > ', user => {
                 rl.question('Password? (Warning, visible in console) > ', async (password) => {
-                    ftp = new FtpUploader({
+                    ftp = new uploaderTool[remoteSystem]({
                         host: host,
                         port: port,
                         user: user,
