@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1609249287862" clover="3.2.0">
-  <project timestamp="1609249287862" name="All files">
-    <metrics statements="139" coveredstatements="114" conditionals="18" coveredconditionals="11" methods="54" coveredmethods="39" elements="211" coveredelements="164" complexity="0" loc="139" ncloc="139" packages="6" files="6" classes="6"/>
+<coverage generated="1609303042147" clover="3.2.0">
+  <project timestamp="1609303042147" name="All files">
+    <metrics statements="138" coveredstatements="113" conditionals="18" coveredconditionals="11" methods="54" coveredmethods="39" elements="210" coveredelements="163" complexity="0" loc="138" ncloc="138" packages="6" files="6" classes="6"/>
     <package name="ftpUploader">
-      <metrics statements="45" coveredstatements="39" conditionals="10" coveredconditionals="9" methods="18" coveredmethods="16"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\ftpUploader\index.ts">
-        <metrics statements="45" coveredstatements="39" conditionals="10" coveredconditionals="9" methods="18" coveredmethods="16"/>
+      <metrics statements="44" coveredstatements="38" conditionals="10" coveredconditionals="9" methods="18" coveredmethods="16"/>
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\ftpUploader\index.ts">
+        <metrics statements="44" coveredstatements="38" conditionals="10" coveredconditionals="9" methods="18" coveredmethods="16"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -16,46 +16,45 @@
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="32" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
         <line num="51" count="3" type="stmt"/>
-        <line num="52" count="3" type="stmt"/>
-        <line num="53" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
-        <line num="55" count="2" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
         <line num="62" count="3" type="stmt"/>
-        <line num="63" count="3" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
         <line num="72" count="2" type="stmt"/>
-        <line num="73" count="2" type="stmt"/>
-        <line num="74" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
         <line num="75" count="1" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
         <line num="82" count="1" type="stmt"/>
-        <line num="83" count="1" type="stmt"/>
-        <line num="92" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="91" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="2" type="stmt"/>
         <line num="94" count="2" type="stmt"/>
-        <line num="95" count="2" type="stmt"/>
-        <line num="96" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="95" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="96" count="0" type="stmt"/>
         <line num="97" count="0" type="stmt"/>
-        <line num="98" count="0" type="stmt"/>
+        <line num="103" count="2" type="stmt"/>
         <line num="104" count="2" type="stmt"/>
-        <line num="105" count="2" type="stmt"/>
-        <line num="114" count="1" type="stmt"/>
+        <line num="113" count="1" type="stmt"/>
       </file>
     </package>
     <package name="sftpUploader">
       <metrics statements="32" coveredstatements="30" conditionals="2" coveredconditionals="1" methods="17" coveredmethods="15"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\sftpUploader\index.ts">
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\sftpUploader\index.ts">
         <metrics statements="32" coveredstatements="30" conditionals="2" coveredconditionals="1" methods="17" coveredmethods="15"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -93,7 +92,7 @@
     </package>
     <package name="util">
       <metrics statements="23" coveredstatements="15" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="4"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\util\index.ts">
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\util\index.ts">
         <metrics statements="23" coveredstatements="15" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="4"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -122,7 +121,7 @@
     </package>
     <package name="util.class">
       <metrics statements="29" coveredstatements="20" conditionals="4" coveredconditionals="1" methods="10" coveredmethods="4"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\util\class\index.ts">
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\util\class\index.ts">
         <metrics statements="29" coveredstatements="20" conditionals="4" coveredconditionals="1" methods="10" coveredmethods="4"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -157,7 +156,7 @@
     </package>
     <package name="util.const-code">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\util\const-code\index.ts">
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\util\const-code\index.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
@@ -169,7 +168,7 @@
     </package>
     <package name="util.log">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.ts" path="D:\ftp项目\upload-tool\src\widgets\util\log\index.ts">
+      <file name="index.ts" path="E:\code\upload-tool\src\widgets\util\log\index.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
